@@ -1,0 +1,189 @@
+ @media (max-width: 1000px) {
+     .container {
+         display: flex;
+         position: fixed;
+         left: -100%;
+         top: 0;
+         width: 250px;
+         height: 100vh;
+         z-index: 2000;
+         transition: left 0.3s ease-in-out;
+         background-color: #1a1a1a;
+         box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+         overflow-y: auto !important;
+         overflow-x: hidden !important;
+         scrollbar-width: thin;
+     }
+
+     html,
+     body {
+         overflow-x: hidden;
+         width: 100% !important;
+         margin: 0 !important;
+         padding: 0 !important;
+     }
+
+     .conversor-container {
+         width: 92% !important;
+         max-width: 100% !important;
+         min-width: 0 !important;
+         margin: 10px auto !important;
+         padding: 15px !important;
+         box-sizing: border-box;
+     }
+
+     .conversor-container input,
+     .conversor-container select,
+     .conversor-container button {
+         max-width: 100% !important;
+         box-sizing: border-box !important;
+     }
+
+
+     .conversor-grid {
+         display: flex !important;
+         flex-direction: column !important;
+         width: 100% !important;
+         gap: 10px !important;
+     }
+
+
+     .tabela-container {
+         width: 95% !important;
+         max-width: 100% !important;
+         min-width: 0 !important;
+         margin: 15px auto !important;
+         padding: 10px !important;
+         box-sizing: border-box !important;
+         overflow: hidden !important;
+         background-color: #fff;
+         border-radius: 8px;
+         overflow-y: auto !important;
+         scrollbar-width: thin;
+     }
+
+     .tabela-ranking {
+         width: 100% !important;
+         table-layout: fixed !important;
+         border-collapse: collapse !important;
+     }
+
+     .tabela-ranking th,
+     .tabela-ranking td {
+         font-size: 11px !important;
+         padding: 8px 4px !important;
+         text-align: center !important;
+         word-wrap: break-word !important;
+         overflow: hidden;
+     }
+
+
+     .tabela-ranking img,
+     .tabela-ranking svg {
+         max-width: 20px !important;
+         height: auto !important;
+     }
+
+     .corpo,
+     .conteudo-principal {
+         margin-left: 0 !important;
+         padding-left: 0 !important;
+         padding-right: 0 !important;
+         width: 100% !important;
+         max-width: 100vw !important;
+         display: flex !important;
+         flex-direction: column !important;
+         justify-content: center !important;
+         align-items: center !important;
+         overflow-x: hidden !important;
+         overflow-y: auto !important;
+         scrollbar-width: thin;
+     }
+
+
+     .conteudo-principal h2 {
+         font-size: 1.8rem !important;
+         width: 90% !important;
+         margin: 0 auto !important;
+         text-align: center !important;
+     }
+
+
+     .conversor-container,
+     .tabela-container,
+     .ajuda-container {
+         width: 90% !important;
+         max-width: 100% !important;
+         margin: 10px auto !important;
+         box-sizing: border-box !important;
+     }
+
+
+     .boas-vindas-container {
+         width: 100%;
+         display: flex;
+         justify-content: center;
+     }
+
+
+     .container.aberto {
+         left: 0 !important;
+     }
+
+
+     .conteudo-principal h2 {
+
+         font-size: 30px;
+     }
+
+
+     .btn-fechar-sidebar {
+         display: block;
+     }
+
+
+     .header-esq h1 {
+         font-size: 25px;
+     }
+
+     .btn-tema {
+         margin-right: 30px !important;
+     }
+
+
+     .btn-tema svg {
+         font-size: 20px !important;
+     }
+
+     .containerh {
+         left: 0 !important;
+         width: 100% !important;
+         justify-content: space-between !important;
+         padding: 0 15px !important;
+     }
+
+
+     .btn-menu-mobile {
+         display: block !important;
+         background: transparent;
+         border: none;
+         font-size: 24px;
+         color: inherit;
+         cursor: pointer;
+     }
+
+
+     .header-esq svg:not(.btn-menu-mobile svg) {
+         display: none !important;
+     }
+ }
+
+ .btn-menu-mobile {
+     display: none;
+     background: transparent;
+     border: none;
+     font-size: 25px;
+     cursor: pointer;
+     margin-right: 15px;
+     color: inherit;
+ }
