@@ -39,6 +39,11 @@ faTimes (O "X" para fechar o menu).
 
 
 
+
+
+
+
+
 💰 Multi-Currency Converter
 This is a modern and responsive Dashboard for currency conversion and exchange rate monitoring. The project was developed with a focus on user experience, offering a clean interface and useful features for daily financial activities.
 
