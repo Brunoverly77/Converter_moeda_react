@@ -8,7 +8,12 @@ import './mobile.css'
 
 const traducoes = {
   pt: {
-    bemVindo: "Seja bem-vindo 👋",
+    bemVindo: "Seja bem-vindo",
+    heroEyebrow: "Painel · atualizado hoje",
+    heroSub: "Acompanhe cotações, converta valores e fique de olho no mercado em um só lugar.",
+    heroBtnPrincipal: "Ir para o conversor",
+    heroBtnSecundario: "Ver placar de moedas",
+    tickerLabel: "Cotações em Reais (BRL)",
     tituloConversor: "Conversor Multimoedas",
     tabelaTitulo: "🏆 Placar das Moedas",
     tabelaSub: "Quanto vale 1 unidade de cada moeda em Reais (BRL)",
@@ -38,7 +43,12 @@ const traducoes = {
     faq2R: "Não. As taxas são valores fixos e aproximados para fins de demonstração. Para valores reais, consulte órgãos oficiais."
   },
   en: {
-    bemVindo: "Welcome 👋",
+    bemVindo: "Welcome",
+    heroEyebrow: "Dashboard · updated today",
+    heroSub: "Track exchange rates, convert values and keep an eye on the market in one place.",
+    heroBtnPrincipal: "Go to converter",
+    heroBtnSecundario: "View scoreboard",
+    tickerLabel: "Rates in Brazilian Reais (BRL)",
     tituloConversor: "Multi-Currency Converter",
     tabelaTitulo: "🏆 Currency Scoreboard",
     tabelaSub: "Value of 1 unit of each currency in Reais (BRL)",
@@ -68,7 +78,12 @@ const traducoes = {
     faq2R: "No. Rates are fixed and approximate values for demonstration purposes."
   },
   es: {
-    bemVindo: "Bienvenido 👋",
+    bemVindo: "Bienvenido",
+    heroEyebrow: "Panel · actualizado hoy",
+    heroSub: "Sigue las cotizaciones, convierte valores y mantente al tanto del mercado en un solo lugar.",
+    heroBtnPrincipal: "Ir al conversor",
+    heroBtnSecundario: "Ver marcador",
+    tickerLabel: "Cotizaciones en Reales (BRL)",
     tituloConversor: "Conversor Multidivisas",
     tabelaTitulo: "🏆 Marcador de Monedas",
     tabelaSub: "Cuánto vale 1 unidad de cada moneda en Reales (BRL)",
@@ -99,6 +114,11 @@ const traducoes = {
   }
 };
 
+const bandeiras = {
+  USD: '🇺🇸', EUR: '🇪🇺', GBP: '🇬🇧', CHF: '🇨🇭', CAD: '🇨🇦',
+  AUD: '🇦🇺', CNY: '🇨🇳', JPY: '🇯🇵', ARS: '🇦🇷', BRL: '🇧🇷'
+};
+
 function App() {
   const [telaAtiva, setTelaAtiva] = useState('boas-vindas');
   const [valor, setValor] = useState(0);
@@ -121,6 +141,8 @@ function App() {
     CAD: 'C$', AUD: 'A$', JPY: '¥', CNY: '¥', CHF: 'Fr'
   };
 
+  const moedasTicker = ['USD', 'EUR', 'GBP', 'CHF', 'CAD', 'AUD', 'CNY', 'JPY', 'ARS'];
+
   const converterMoeda = () => {
     if (valor <= 0) return;
     const valorEmReais = valor * taxasParaReal[deMoeda];
@@ -128,15 +150,18 @@ function App() {
     setResultado(valorFinal);
   };
 
+  const irPara = (tela) => setTelaAtiva(tela);
+
   return (
     <div className={`layout ${temaEscuro ? 'dark-mode' : ''}`}>
       <Container trocarTela={(novaTela) => {
-        setTelaAtiva(novaTela); 
-        setMenuAberto(false);   
+        setTelaAtiva(novaTela);
+        setMenuAberto(false);
       }}
         idioma={idioma}
         menuAberto={menuAberto}
-        setMenuAberto={setMenuAberto} />
+        setMenuAberto={setMenuAberto}
+        telaAtiva={telaAtiva} />
 
       <div className="corpo">
         <Containerh temaEscuro={temaEscuro} alternarTema={() => setTemaEscuro(!temaEscuro)} abrirMenu={() => setMenuAberto(!menuAberto)}
@@ -145,7 +170,31 @@ function App() {
         <main className="conteudo-principal">
 
           {telaAtiva === 'boas-vindas' && (
-            <h2 className="animacao">{t.bemVindo}</h2>
+            <div className="boas-vindas-wrap">
+              <span className="hero-eyebrow">{t.heroEyebrow}</span>
+              <h2 className="hero-titulo">{t.bemVindo} 👋</h2>
+              <p className="hero-sub">{t.heroSub}</p>
+
+              <div className="ticker">
+                <span className="ticker-label">{t.tickerLabel}</span>
+                <div className="ticker-track">
+                  <div className="ticker-list">
+                    {[...moedasTicker, ...moedasTicker].map((id, i) => (
+                      <span className="ticker-item" key={id + i}>
+                        <span className="flag">{bandeiras[id]}</span>
+                        {id}
+                        <span className="val">R$ {taxasParaReal[id].toFixed(2)}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="hero-acoes">
+                <button className="hero-btn principal" onClick={() => irPara('conversor')}>{t.heroBtnPrincipal}</button>
+                <button className="hero-btn secundario" onClick={() => irPara('tabela')}>{t.heroBtnSecundario}</button>
+              </div>
+            </div>
           )}
 
           {telaAtiva === 'conversor' && (
