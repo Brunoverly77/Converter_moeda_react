@@ -14,7 +14,7 @@ function Containerh({ temaEscuro, alternarTema, abrirMenu, menuAberto }) {
           <FontAwesomeIcon icon={menuAberto ? faTimes : faBars} />
         </button>
         <div>
-          <h1>Dashboard</h1>
+          <h1>workflow</h1>
           <span className="header-tagline">Conversor Multimoedas</span>
         </div>
       </div>
